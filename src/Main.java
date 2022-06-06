@@ -39,7 +39,7 @@ public class Main {
                 else {
                     estates.stream().sorted(Comparator.comparing(Estate::getPrice).reversed()).forEach(System.out::println);}
                     menu(print_menu());
-                case 5:  //сгруппировать квартиры по станциям метро
+            case 5:  //сгруппировать квартиры по станциям метро
                     Map<String, List<Flat>> group_metro = flats.stream().collect(Collectors.groupingBy(Flat::getMetro));
                     group_metro.forEach((metro, flats) -> {
                         System.out.println("Metro: " + metro);
@@ -47,17 +47,16 @@ public class Main {
                         System.out.println();
                     });
                     menu(print_menu());
-                case 6:  //вывести квартиру с наивысшей оценкой
+           case 6:  //вывести квартиру с наивысшей оценкой
                 flats.stream().max(Comparator.comparing(Flat::getRate)).ifPresent(System.out::println);
                 menu(print_menu());
-            case 7:  //печать списка квартир на продажу
+           case 7:  //печать списка квартир на продажу
                 flats.stream().forEach(System.out::println);
                 menu(print_menu());
                 break;
-            case 8:  //удалить все
-            case 9:  //распечатать сгруппированные списки по типу недвижимости
-
-            case 10: //выход из программы
+           case 8:  //удалить все
+           case 9:  //распечатать сгруппированные списки по типу недвижимости
+           case 10: //выход из программы
                 System.exit(404);
                 break;
         }
