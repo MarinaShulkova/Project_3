@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     static List<Flat> flats = new ArrayList<Flat>();
@@ -20,7 +21,7 @@ public class Main {
                     flats.add(f);
                     flats.add(addProperty(1));
                 }
-                //               else estates.add((Estate) addProperty(2));
+                //          else estates.add((Estate) addProperty(2));
                 menu(print_menu());
                 break;
 
@@ -38,15 +39,25 @@ public class Main {
                 else {
                     estates.stream().sorted(Comparator.comparing(Estate::getPrice).reversed()).forEach(System.out::println);}
                     menu(print_menu());
-            case 5:  //вывести квартиру с наивысшей оценкой
-            case 6:  //печать списка квартир на продажу
+                case 5:  //сгруппировать квартиры по станциям метро
+                    Map<String, List<Flat>> group_metro = flats.stream().collect(Collectors.groupingBy(Flat::getMetro));
+                    group_metro.forEach((metro, flats) -> {
+                        System.out.println("Metro: " + metro);
+                        flats.forEach(e -> System.out.println(" " + e));
+                        System.out.println();
+                    });
+                    menu(print_menu());
+                case 6:  //вывести квартиру с наивысшей оценкой
+                flats.stream().max(Comparator.comparing(Flat::getRate)).ifPresent(System.out::println);
+                menu(print_menu());
+            case 7:  //печать списка квартир на продажу
                 flats.stream().forEach(System.out::println);
                 menu(print_menu());
-
                 break;
-            case 7:  //удалить все
-            case 8:  //распечатать сгруппированные списки по типу недвижимости
-            case 9: //выход из программы
+            case 8:  //удалить все
+            case 9:  //распечатать сгруппированные списки по типу недвижимости
+
+            case 10: //выход из программы
                 System.exit(404);
                 break;
         }
@@ -60,11 +71,12 @@ public class Main {
                         "2 Delete property \n" +
                         "3 Sort ascending \n" +
                         "4 Sort descending \n" +
-                        "5 Print high rate property \n" +
-                        "6 Print all property \n" +
-                        "7 Delete all \n" +
-                        "8 Print property grouped by type \n" +
-                        "9 Exit");
+                        "5 Group flat by metro \n" +
+                        "6 Print high rate property \n" +
+                        "7 Print all property \n" +
+                        "8 Delete all \n" +
+                        "9 Print property grouped by type \n" +
+                        "10 Exit");
 
         System.out.println("Choose menu item: ");
         Scanner scr = new Scanner(System.in);
@@ -110,7 +122,7 @@ public class Main {
 
     public static void setFlats(){
         flats.add(new Flat("Flat 1", "Pervomayskaya", "9 Parkovaya 36", 2, 47.3, 10200000, 4.2F));
-        flats.add(new Flat("Flat 2", "Strogino", "Stroginskaya 12", 2, 68, 15000000, 4.7F));
+        flats.add(new Flat("Flat 2", "Pervomayskaya", "10 Parkovaya 12", 2, 68, 15000000, 4.7F));
         flats.add(new Flat("Flat 3", "Domodedovskaya", "Domodedovskaya 58", 3, 105.8, 23000000, 4.8F));
         flats.add(new Flat("Flat 4", "Tverskaya", "2 Tverskaya-Yamskya", 1, 13.2, 25000000, 3.5F));}
 
@@ -124,8 +136,8 @@ public class Main {
     public static int menu_2 () {
         System.out.println("Choose property: \n 1.Flat \n 2.Commercial real estate");
         Scanner scr = new Scanner(System.in);
-        int menu_3 = scr.nextInt();
-        return menu_3;
+        int menu_2 = scr.nextInt();
+        return menu_2;
     }
 }
 
