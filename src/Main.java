@@ -56,6 +56,10 @@ public class Main {
                 break;
            case 8:  //удалить все
            case 9:  //распечатать сгруппированные списки по типу недвижимости
+               System.out.println("Flat");
+               flats.stream().forEach(System.out::println);
+               System.out.println("Estate");
+               estates.stream().forEach(System.out::println);
            case 10: //выход из программы
                 System.exit(404);
                 break;
