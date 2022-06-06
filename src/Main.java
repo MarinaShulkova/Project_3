@@ -29,7 +29,7 @@ public class Main {
                 flats.remove(1);
             case 3:  //сорти5ровка по возрастанию
                 if (menu_2() == 1) {
-                flats.stream().sorted(Comparator.comparing(Flat::getPrice)).forEach(System.out::println);}
+              flats.stream().sorted(Comparator.comparing(Flat::getPrice)).forEach(System.out::println);}
                 else {
                     estates.stream().sorted(Comparator.comparing(Estate::getPrice)).forEach(System.out::println);}
                 menu(print_menu());
@@ -60,6 +60,7 @@ public class Main {
                flats.stream().forEach(System.out::println);
                System.out.println("Estate");
                estates.stream().forEach(System.out::println);
+               menu(print_menu());
            case 10: //выход из программы
                 System.exit(404);
                 break;

@@ -76,6 +76,7 @@ public class Estate {
 
     @Override
     public String toString() {
-        return  "Property:" + name + ", Metro station: " + metro + ", Address: " + address + ", Type estate: " + type + ", Area: " + area + ", Price: " + price + ", Rate:" + rate;
+        return  "Property:" + name +  ", Price: " + price + ", Rate:" + rate;
+//        return  "Property:" + name + ", Metro station: " + metro + ", Address: " + address + ", Type estate: " + type + ", Area: " + area + ", Price: " + price + ", Rate:" + rate;
     }
 }
