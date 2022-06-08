@@ -76,8 +76,8 @@ public class Flat {
 
     @Override
     public String toString() {
-        return "Property:" + name +  ", Price: " + price + ", Rate:" + rate;
-//      return "Property:" + name + ", Address: " + address + ", Rooms: " + room + ", Area: " + area + ", Price: " + price + ", Rate:" + rate;
+        return "Property:" + name + ", Price: " + price + ", Rate:" + rate;
     }
 }
+
 
